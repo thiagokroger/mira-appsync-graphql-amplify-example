@@ -4,10 +4,15 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.23",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@aws-cdk/aws-cloudformation": "1.67.0",
+    "@aws-cdk/aws-lambda-event-sources": "1.67.0",
+    "@aws-cdk/aws-rds": "1.67.0",
+    "@aws-cdk/aws-s3-deployment": "1.67.0",
+    "@aws-cdk/aws-secretsmanager": "1.67.0",
+    "@aws-cdk/core": "1.67.0",
     "aws-amplify": "^3.3.3",
+    "aws-cdk": "1.67.0",
+    "mira": "^1.3.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -15,9 +20,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "tsc -p infra/",
+    "dev": "tsc -p infra/ --watch",
+    "deploy": "npx mira deploy todolist-dev --file=infra/src/index.js",
+    "undeploy": "npx mira undeploy todolist-dev --file=infra/src/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^10.17.24",
+    "typescript": "^4.0.3"
   }
 }
